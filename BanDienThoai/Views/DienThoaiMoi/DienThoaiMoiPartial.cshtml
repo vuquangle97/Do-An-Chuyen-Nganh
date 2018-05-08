@@ -1,0 +1,19 @@
+﻿@using BanDienThoai.Models;
+@*Dinh nghia kieu du lieu cho model*@
+@model List<SanPham>
+<h1 class="item-header">Điện thoại mới</h1>
+@{ foreach (var item in Model)
+    {
+        <div class="activity-list-update">
+            <img src="@Url.Content("~/HinhAnhSP/"+item.Anh)" width="50" height="50" alt="Image">
+            <p><strong>Tiêu đề: @item.TenSP</strong><br /> <a href="#">Xem chi tiết</a></p>
+            <div class="clear"></div>
+        </div>
+    }
+}
+<a href="#" class="item-footer green">
+    Mẫu điện thoại mới
+</a>
+
+
+

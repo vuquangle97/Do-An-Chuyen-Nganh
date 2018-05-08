@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @* chèn link css từ nguoidungcss trong template flatby máter*@
+    <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+    @*chèn css thiết kế*@
+    <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+    @* chèn css font*@
+    <link href="~/Content/fontawnsome/css/font-awesome.min.css" rel="stylesheet" />
+    @*chen css nivo slider*@
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+</head>
+<body>
+
+    <div id="ToanTrang">
+        <section class="blank">
+            <div class="flash">
+                <div class="icDienThoai">
+                    <i class="icon-phone"></i>
+                    (84)1282130339
+                </div>
+                @* Tạo div đăng kí đăng nhập*@
+                <div class="DangKyDangNhap">
+                    <i class="icon-signin"></i>
+                    @Html.ActionLink("Đăng ký", "DangKy", null, new { @class = "DangKy" })
+                    <i class="icon-unlock"></i>
+                    @Html.ActionLink("Đăng nhập", "DangNhap", null, new { @class = "DangNhap" })
+
+                </div>
+            </div>
+            @*Xây dựng div Menu*@
+            <div class="flash success" id="divDanhMuc">
+                @*Hopopj tìm kiếm*@
+                <div id="txtTimKiem">
+                    @*<i class="icon-search"></i> Tìm kiếm*@
+                    @using (Html.BeginForm())
+                    {
+                        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập từ khóa cần tìm" })
+                    }
+                    <div id="divImageSearch">
+                        <button type="submit">
+
+                            <img src="~/Anh/search.png" />
+                        </button>
+                    </div>
+                </div>
+                @*menu phải*@
+                <ul class="navMenu">
+                    <li><a href="a">Trang chủ</a></li>
+                    <li><a href="a">Giới thiệu</a></li>
+                    <li><a href="a">Tin tức</a></li>
+                    <li><a href="a">Tư vấn</a></li>
+                    <li><a href="a">Sản phẩm</a></li>
+                    <li><a href="a">Tuyển dụng</a></li>
+                    <li><a href="a">Liên hệ</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div id="divMenuTrai">
+                @* chèn partial view dienthoaimoi*@
+                <div class="activity">
+                    @Html.Action("DienThoaiMoiPartial","DienThoaiMoi")
+                </div>
+            </div>
+            @*chen div nivo slider*@
+            <div id="slider" class="nivoSlider">
+                <img src="~/Anh/iphonex2.jpg" />
+                <img src="~/Anh/iphonex.jpg" />
+                <img src="~/Anh/ru-feature-galaxy-s8-plus-g955-63701359.jpg" />
+            </div>
+            <div style="clear:both"></div>
+        </section>
+        @*div body*@
+        <div id="NoiDung">
+            @RenderBody()
+        </div>
+        <section>
+            <div>
+                @Html.Action("NhaCungCapPartial","NhaCungCap")
+            </div>
+
+            <hr>
+            <hr>
+
+        </section>
+        @*nhà sản xuất*@
+        <section class="blank items">
+            <div id="divLeft">
+                <div class="item">
+
+                    <div class="item-info">
+                        <h1>Nhà Sản Xuất</h1>
+                        <div><a href="a">Apple</a></div>
+                        <div><a href="a">Samsung</a></div>
+                        <div><a href="a">LG</a></div>
+                        <div><a href="a">Xiaomi</a></div>
+                        <div><a href="a">Sony</a></div>
+                    </div>
+
+                    <img src="http://lorempixel.com/400/300/" alt="Image">
+                </div>
+            </div>
+            <div id="divRight">
+                @RenderSection("NoiDungBenPhai")
+            </div>
+            <div style="clear:both"></div>
+            <div>
+                <a href="#" class="button button-buy">Lê Quang Vũ</a>
+            </div>
+        </section>
+    </div>
+    @*script chay slider*@
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                nextText: '',
+                prevText: '',
+
+            });
+        });
+    </script>
+</body>
+</html>

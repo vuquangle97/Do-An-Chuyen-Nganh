@@ -1,0 +1,34 @@
+﻿@using BanDienThoai.Models;
+@model List<SanPham>
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+@section NoiDungBenPhai{<div>
+        Bell biết rằng, thí nghiệm của mình đã thành công và đây chính là sự kiện lịch sử đánh dấu chính thức sự ra đời của chiếc điện thoại liên lạc.
+
+        Vào thời bấy giờ, chiếc điện thoại của Alexander Graham Bell thực sự là một bước tiến công nghệ đột phá, là kết quả của một nỗ lực nghiên cứu tìm tòi ra phương thức liên lạc mới thay thế cho máy điện báo thô sơ thường được sử dụng trước đó.
+
+        Bell đã được nhận bằng phát minh số 174465 về máy điện thoại. Tháng 6/1876, lần đầu tiên, máy điện thoại được đưa vào sử dụng tại hội chợ triển lãm “Contennial Exposition” ở Philadelphia.
+    </div>
+}
+@*Div body trang index*@
+<div id="divBody">
+    @{ int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    <div id="SanPham">
+        <div id="AnhSP"><img src="@Url.Content("~/HinhAnhSP/"+item.Anh)" width="100" height="150" /></div>
+        <div id="TenSP">@item.TenSP</div>
+        <div id="Gia">@item.DonGiaNhap</div>
+    </div>
+    if (i % 3 == 0)
+    {
+        <div style="clear:both"></div>
+    }
+}
+
+</div>
+<div style="clear:both"></div>
